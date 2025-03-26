@@ -168,14 +168,26 @@ export function useChatSynth() {
     }
   }, [isInitialized]);
 
-  useEffect(() => {
-    const handleFirstInteraction = () => {
-      initializeTone();
-      window.removeEventListener("click", handleFirstInteraction);
-    };
-    window.addEventListener("click", handleFirstInteraction);
-    return () => window.removeEventListener("click", handleFirstInteraction);
-  }, [initializeTone]);
+ useEffect(() => {
+  const handleFirstInteraction = () => {
+    if (Tone.context.state !== "running") {
+      Tone.start().then(() => {
+        console.log("✅ Tone.js AudioContext started!");
+      }).catch((e) => console.error("❌ Tone.js start failed:", e));
+    }
+    window.removeEventListener("click", handleFirstInteraction);
+    window.removeEventListener("touchstart", handleFirstInteraction);
+  };
+
+  window.addEventListener("click", handleFirstInteraction);
+  window.addEventListener("touchstart", handleFirstInteraction); // ✅ Works for mobile
+
+  return () => {
+    window.removeEventListener("click", handleFirstInteraction);
+    window.removeEventListener("touchstart", handleFirstInteraction);
+  };
+}, []);
+
 
   const changePreset = useCallback((presetKey: string) => {
     if (SYNTH_PRESETS[presetKey]) {
