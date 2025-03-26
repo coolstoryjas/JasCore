@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "routes": [
+    {
+      "src": "^/(?:(.+)/)?index(?:\\.html)?/?$",
+      "headers": {
+        "Location": "/$1"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/(.*)\\.html/?$",
+      "headers": {
+        "Location": "/$1"
+      },
+      "status": 308
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/api/audio-transcribe$",
+      "dest": "/api/audio-transcribe",
+      "check": true
+    },
+    {
+      "src": "^/api/chat$",
+      "dest": "/api/chat",
+      "check": true
+    }
+  ],
+  "overrides": {}
+}

@@ -1,0 +1,278 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@font-face {
+  font-family: "ChicagoKare";
+  src: url("/fonts/ChicagoKare-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ArkPixel";
+  src: url("/fonts/ark-pixel-zh_tw.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SerenityOS-Emoji";
+  src: url("/fonts/SerenityOS-Emoji.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geneva-9";
+  src: url("/fonts/geneva-9.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Geneva-12";
+  src: url("/fonts/geneva-12.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AppleGaramond";
+  src: url("/fonts/AppleGaramond.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 89%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 89%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 89%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 0%;
+    --ring: 0 0% 0%;
+    --radius: 0px;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "ChicagoKare", "ArkPixel", "SerenityOS-Emoji", system-ui,
+      -apple-system, sans-serif;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+  }
+}
+
+@keyframes blink_input_opacity_to_prevent_scrolling_when_focus {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.input--focused {
+  animation: blink_input_opacity_to_prevent_scrolling_when_focus 0.01s;
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  width: 50%;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(120px);
+  }
+  100% {
+    transform: translateX(-120px);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 2s linear infinite;
+}
+
+@layer utilities {
+  .font-geneva-12 {
+    font-family: "Geneva-12", "ArkPixel", "SerenityOS-Emoji", system-ui,
+      -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+  }
+
+  .font-apple-garamond {
+    font-family: "AppleGaramond", "Georgia", "Palatino", serif;
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+  }
+}
+
+/* CRT Scanline Effect */
+.crt-effect {
+  position: relative;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgba(128, 128, 128, 0.6) 0%,
+    rgba(128, 128, 128, 0.6) 25%,
+    #fff 40%,
+    rgba(128, 128, 128, 0.6) 75%,
+    rgba(128, 128, 128, 0.6) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2s infinite linear;
+}
+
+.crt-effect::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline 10s linear infinite;
+}
+
+#dosbox canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+}
+
+#dosbox > div > div.absolute.right-10.bottom-10 > div {
+  display: flex;
+  position: absolute;
+  width: 200px;
+  flex-direction: row;
+  color: #ffffff;
+  top: 12px;
+  left: 12px;
+  text-shadow: 0 0 4px #000;
+  font-family: Geneva-12, Geneva, Tahoma, sans-serif;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+}
+
+#dosbox > div > div.absolute.right-10.bottom-10 > div > svg {
+  display: none;
+}
+
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Add subtle flicker animation for CRT effect */
+.crt-effect::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.05;
+  }
+}
