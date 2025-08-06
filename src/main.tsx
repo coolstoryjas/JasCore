@@ -1,4 +1,7 @@
-import './storage.ts';
+import './utils/storage';
+
+console.log("✅ JasCore storage.ts is live!");
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
