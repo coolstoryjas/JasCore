@@ -1,3 +1,5 @@
+console.log("JasCore storage.ts is live!");
+
 import { Soundboard, WindowPosition, WindowSize } from "../types/types";
 import { AppManagerState, AppState } from "../apps/base/types";
 import { Message } from "ai";
