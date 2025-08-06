@@ -656,7 +656,7 @@ const DEFAULT_VIDEOS: Video[] = [
   },
   {
     id: "GYLUSHZl8M0",
-    url: "https://youtu.be/jL0rvbHhJLM?si=Ew0-9RnJ_yJBQ8AI",
+    url: "https://www.youtube.com/watch?v=jL0rvbHhJLM",
     title: "Morena - Palmasur",
   },
   {
