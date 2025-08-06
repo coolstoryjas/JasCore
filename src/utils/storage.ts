@@ -656,8 +656,8 @@ const DEFAULT_VIDEOS: Video[] = [
   },
   {
     id: "GYLUSHZl8M0",
-    url: "https://www.youtube.com/watch?v=YWaTsluOXNY",
-    title: "Veneno - La Dame Blanche",
+    url: "https://youtu.be/jL0rvbHhJLM?si=Ew0-9RnJ_yJBQ8AI",
+    title: "Morena - Palmasur",
   },
   {
     id: "pSUydWEqKwE",
